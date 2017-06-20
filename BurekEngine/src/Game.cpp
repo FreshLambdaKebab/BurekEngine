@@ -1,4 +1,8 @@
 #include "Game.h"
+#include <string>
+#include <iostream>
+
+#include "Debug.h"
 
 Game::Game() :
 	m_window(nullptr),
@@ -26,9 +30,35 @@ void Game::Init()
 	SDL_Init(SDL_INIT_EVERYTHING);
 
 	//create an sdl window
-	SDL_CreateWindow("The Douchebag Crackwhore Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_screenWidth,
+	m_window = SDL_CreateWindow("The Douchebag Crackwhore Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_screenWidth,
 		m_screenHeight, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 
+	if (m_window == nullptr)
+	{
+		FatalError("SDL window could not be created");
+	}
+
+	SDL_GLContext glContext = SDL_GL_CreateContext(m_window);
+	if (glContext == nullptr)
+	{
+		FatalError("SDL_GLContext could not be created");
+	}
+
+	//initialize glew
+	GLenum error = glewInit();
+	if (error != GLEW_OK)
+	{
+		FatalError("could not initialize glew");
+	}
+
+	//set sdl/ogl attributes
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
+	//set background color to desired color
+	glClearColor(0.2f, 0.3f, 0.9f, 1.0f);
+
+	//initialize sprite
+	m_sprite.Init(-1.0f, -1.0f, 1.0f, 1.0f);
 }
 
 void Game::Update()
@@ -37,7 +67,19 @@ void Game::Update()
 	while (m_gameState != GameState::EXIT)
 	{
 		ProcessInput();
+		Draw();
 	}
+}
+
+void Game::Draw()
+{
+	glClearDepth(1.0);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	m_sprite.Draw();
+
+	//swap buffers
+	SDL_GL_SwapWindow(m_window);
 }
 
 void Game::ProcessInput()
