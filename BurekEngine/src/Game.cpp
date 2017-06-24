@@ -58,7 +58,19 @@ void Game::Init()
 	glClearColor(0.2f, 0.3f, 0.9f, 1.0f);
 
 	//initialize sprite
-	m_sprite.Init(-1.0f, -1.0f, 1.0f, 1.0f);
+	m_sprite.Init(-1.0f, -1.0f, 2.0f, 2.0f);
+
+	InitShaders();
+}
+
+void Game::InitShaders()
+{
+	//load the shaders
+	m_colorShader.Compile("res/shaders/colorShader.vert", "res/shaders/colorShader.frag");
+	//add attributes then link
+	m_colorShader.AddAttribute("vertexPosition");
+	m_colorShader.AddAttribute("vertexColor");
+	m_colorShader.LinkShaders();
 }
 
 void Game::Update()
@@ -76,7 +88,14 @@ void Game::Draw()
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	//begin the shader
+	m_colorShader.Use();
+
+	//draw shit
 	m_sprite.Draw();
+
+	//end the shader
+	m_colorShader.Unuse();
 
 	//swap buffers
 	SDL_GL_SwapWindow(m_window);
@@ -86,6 +105,7 @@ void Game::ProcessInput()
 {
 	SDL_Event windowEvent;
 
+	//handle events
 	while (SDL_PollEvent(&windowEvent))
 	{
 		switch (windowEvent.type)

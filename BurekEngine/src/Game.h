@@ -5,6 +5,7 @@
 #include <GL\glew.h>
 
 #include "Sprite.h"
+#include "Shader.h"
 
 enum class GameState{PLAY,EXIT};
 
@@ -18,6 +19,7 @@ public:
 
 private:
 	void Init();
+	void InitShaders();
 	void ProcessInput();
 	void Update();//the main loop
 	void Draw();
@@ -28,6 +30,7 @@ private:
 
 	//game objects
 	Sprite m_sprite;
+	Shader m_colorShader;
 };
 
 #endif //_GAME_H
