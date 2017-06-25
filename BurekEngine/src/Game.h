@@ -31,6 +31,8 @@ private:
 	//game objects
 	Sprite m_sprite;
 	Shader m_colorShader;
+	
+	float m_time;
 };
 
 #endif //_GAME_H

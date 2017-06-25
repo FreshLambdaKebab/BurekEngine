@@ -15,6 +15,7 @@
     <ClCompile Include="src\Sprite.cpp" />
     <ClCompile Include="src\Debug.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\IOManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h" />
@@ -22,5 +23,6 @@
     <ClInclude Include="src\Debug.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\VertexBuffer.h" />
+    <ClInclude Include="src\IOManager.h" />
   </ItemGroup>
 </Project>

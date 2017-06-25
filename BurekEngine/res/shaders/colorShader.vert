@@ -17,7 +17,7 @@ void main()
 	gl_Position.z = 0.0;
 	gl_Position.w = 1.0;
 	
-	//fragmentPosition = vertexPosition;
+	fragmentPosition = vertexPosition;
 	fragmentColor = vertexColor;
 	//fragmentUV = vec2(vertexUV.x , 1.0 - vertexUV.y);
 }

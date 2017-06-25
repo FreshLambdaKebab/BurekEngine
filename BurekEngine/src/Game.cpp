@@ -8,7 +8,8 @@ Game::Game() :
 	m_window(nullptr),
 	m_screenWidth(800),
 	m_screenHeight(600),
-	m_gameState(GameState::PLAY)
+	m_gameState(GameState::PLAY),
+	m_time(0.0f)
 {
 }
 
@@ -79,6 +80,7 @@ void Game::Update()
 	while (m_gameState != GameState::EXIT)
 	{
 		ProcessInput();
+		m_time += 0.01f;
 		Draw();
 	}
 }
@@ -90,6 +92,10 @@ void Game::Draw()
 
 	//begin the shader
 	m_colorShader.Use();
+
+	//set uniforms
+	GLuint timeLocation = m_colorShader.GetUniformLocation("time");
+	glUniform1f(timeLocation, m_time);
 
 	//draw shit
 	m_sprite.Draw();

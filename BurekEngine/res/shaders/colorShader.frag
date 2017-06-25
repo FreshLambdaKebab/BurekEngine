@@ -7,10 +7,13 @@ in vec2 fragmentUV;
 out vec4 color;
 
 uniform sampler2D mySampler;
+uniform float time;
 
 void main()
 {
 	//vec4 textureColor = texture(mySampler,fragmentUV);
-
-	color = fragmentColor;// * textureColor;
+	color = vec4(fragmentColor.r * (cos(fragmentPosition.x * 0.4 + time) + 1.0) * 0.5,
+				 fragmentColor.g * (cos(fragmentPosition.y * 0.8 + time) + 1.0) * 0.5,
+				 fragmentColor.b * (cos(fragmentPosition.x * 0.8 + time) + 1.0) * 0.5,1.0);
+	
 }  
