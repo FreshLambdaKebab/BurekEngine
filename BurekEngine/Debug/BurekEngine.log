@@ -1,8 +1,7 @@
-﻿  Shader.cpp
-  Game.cpp
-  Generating Code...
-  Compiling...
-  main.cpp
-  Generating Code...
+﻿  Sprite.cpp
+c:\users\duran_000\documents\github\burekengine\burekengine\src\sprite.cpp(22): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\duran_000\documents\github\burekengine\burekengine\src\sprite.cpp(23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\duran_000\documents\github\burekengine\burekengine\src\sprite.cpp(24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\duran_000\documents\github\burekengine\burekengine\src\sprite.cpp(25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   BurekEngine.vcxproj -> C:\Users\duran_000\Documents\GitHub\BurekEngine\Debug\BurekEngine.exe
   BurekEngine.vcxproj -> C:\Users\duran_000\Documents\GitHub\BurekEngine\Debug\BurekEngine.pdb (Partial PDB)

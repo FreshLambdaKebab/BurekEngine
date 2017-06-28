@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "Debug.h"
+#include "ImageLoader.h"
 
 Game::Game() :
 	m_window(nullptr),
@@ -61,7 +62,11 @@ void Game::Init()
 	//initialize sprite
 	m_sprite.Init(-1.0f, -1.0f, 2.0f, 2.0f);
 
+	//initialize and load shaders
 	InitShaders();
+
+	//load textures
+	m_texture = ImageLoader::LoadPNG("res/textures/mario-sprite.png");
 }
 
 void Game::InitShaders()
@@ -71,6 +76,7 @@ void Game::InitShaders()
 	//add attributes then link
 	m_colorShader.AddAttribute("vertexPosition");
 	m_colorShader.AddAttribute("vertexColor");
+	m_colorShader.AddAttribute("vertexUV");
 	m_colorShader.LinkShaders();
 }
 
@@ -92,14 +98,22 @@ void Game::Draw()
 
 	//begin the shader
 	m_colorShader.Use();
+	//set an active texture then bind it
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, m_texture.ID);
+	GLint textureLocation = m_colorShader.GetUniformLocation("mySampler");
+	glUniform1i(textureLocation, 0);
+
 
 	//set uniforms
-	GLuint timeLocation = m_colorShader.GetUniformLocation("time");
-	glUniform1f(timeLocation, m_time);
+	//GLuint timeLocation = m_colorShader.GetUniformLocation("time");
+	//glUniform1f(timeLocation, m_time);
 
 	//draw shit
 	m_sprite.Draw();
 
+	//unbind teh texture
+	glBindTexture(GL_TEXTURE_2D, 0);
 	//end the shader
 	m_colorShader.Unuse();
 

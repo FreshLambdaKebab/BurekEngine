@@ -149,17 +149,22 @@
   <ItemGroup>
     <ClCompile Include="src\Debug.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\ImageLoader.cpp" />
     <ClCompile Include="src\IOManager.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\picoPNG.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Debug.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\ImageLoader.h" />
     <ClInclude Include="src\IOManager.h" />
+    <ClInclude Include="src\picoPNG.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Sprite.h" />
+    <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\VertexBuffer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

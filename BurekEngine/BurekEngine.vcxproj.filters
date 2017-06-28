@@ -16,6 +16,8 @@
     <ClCompile Include="src\Debug.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\IOManager.cpp" />
+    <ClCompile Include="src\picoPNG.cpp" />
+    <ClCompile Include="src\ImageLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h" />
@@ -24,5 +26,8 @@
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\VertexBuffer.h" />
     <ClInclude Include="src\IOManager.h" />
+    <ClInclude Include="src\picoPNG.h" />
+    <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\ImageLoader.h" />
   </ItemGroup>
 </Project>

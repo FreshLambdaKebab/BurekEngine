@@ -19,5 +19,5 @@ void main()
 	
 	fragmentPosition = vertexPosition;
 	fragmentColor = vertexColor;
-	//fragmentUV = vec2(vertexUV.x , 1.0 - vertexUV.y);
+	fragmentUV = vec2(vertexUV.x , 1.0 - vertexUV.y);
 }
