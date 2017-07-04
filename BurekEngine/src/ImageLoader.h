@@ -10,7 +10,7 @@ public:
 	ImageLoader();
 	~ImageLoader();
 
-	static const Texture& LoadPNG(const std::string& path);
+	static Texture LoadPNG(const std::string& path);
 
 private:
 

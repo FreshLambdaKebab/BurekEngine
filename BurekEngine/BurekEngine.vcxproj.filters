@@ -18,6 +18,8 @@
     <ClCompile Include="src\IOManager.cpp" />
     <ClCompile Include="src\picoPNG.cpp" />
     <ClCompile Include="src\ImageLoader.cpp" />
+    <ClCompile Include="src\ResourceManager.cpp" />
+    <ClCompile Include="src\TextureCache.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h" />
@@ -29,5 +31,7 @@
     <ClInclude Include="src\picoPNG.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\ImageLoader.h" />
+    <ClInclude Include="src\ResourceManager.h" />
+    <ClInclude Include="src\TextureCache.h" />
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "Debug.h"
-#include "ImageLoader.h"
+//#include "ImageLoader.h"
 
 Game::Game() :
 	m_window(nullptr),
@@ -60,13 +60,17 @@ void Game::Init()
 	glClearColor(0.2f, 0.3f, 0.9f, 1.0f);
 
 	//initialize sprite
-	m_sprite.Init(-1.0f, -1.0f, 2.0f, 2.0f);
+	m_sprites.push_back(new Sprite());
+	m_sprites.back()->Init(-1.0f, -1.0f, 1.0f, 1.0f, "res/textures/mario-sprite.png");
+
+	m_sprites.push_back(new Sprite());
+	m_sprites.back()->Init(0.0f, -1.0f, 1.0f, 1.0f, "res/textures/mario-sprite.png");
 
 	//initialize and load shaders
 	InitShaders();
 
 	//load textures
-	m_texture = ImageLoader::LoadPNG("res/textures/mario-sprite.png");
+	//m_texture = ImageLoader::LoadPNG();
 }
 
 void Game::InitShaders()
@@ -100,7 +104,6 @@ void Game::Draw()
 	m_colorShader.Use();
 	//set an active texture then bind it
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, m_texture.ID);
 	GLint textureLocation = m_colorShader.GetUniformLocation("mySampler");
 	glUniform1i(textureLocation, 0);
 
@@ -110,7 +113,10 @@ void Game::Draw()
 	//glUniform1f(timeLocation, m_time);
 
 	//draw shit
-	m_sprite.Draw();
+	for (size_t i= 0;i < m_sprites.size();i++)
+	{
+		m_sprites[i]->Draw();
+	}
 
 	//unbind teh texture
 	glBindTexture(GL_TEXTURE_2D, 0);

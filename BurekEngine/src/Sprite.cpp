@@ -1,6 +1,7 @@
 #include "Sprite.h"
 
 #include "VertexBuffer.h"
+#include "ResourceManager.h"
 
 #include <cstddef>
 
@@ -17,12 +18,14 @@ Sprite::~Sprite()
 	}
 }
 
-void Sprite::Init(float x, float y, float width, float height)
+void Sprite::Init(float x, float y, float width, float height, const std::string& texturePath)
 {
 	m_x = x;
 	m_y = y;
 	m_width = width;
 	m_height = height;
+
+	m_texture = ResourceManager::GetTexture(texturePath);
 
 	if (m_vboID == 0)
 	{
@@ -66,6 +69,9 @@ void Sprite::Init(float x, float y, float width, float height)
 
 void Sprite::Draw()
 {
+	//bind texture before any drawing
+	glBindTexture(GL_TEXTURE_2D, m_texture.ID);
+
 	glBindBuffer(GL_ARRAY_BUFFER, m_vboID);
 
 	//use first attrib array

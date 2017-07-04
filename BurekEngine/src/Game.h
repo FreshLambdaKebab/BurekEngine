@@ -3,6 +3,7 @@
 
 #include <SDL\SDL.h>
 #include <GL\glew.h>
+#include <vector>
 
 #include "Sprite.h"
 #include "Shader.h"
@@ -30,9 +31,9 @@ private:
 	GameState m_gameState;
 
 	//game objects
-	Sprite m_sprite;
+	//Sprite m_sprite;
+	std::vector<Sprite*>m_sprites;
 	Shader m_colorShader;
-	Texture m_texture;
 	
 	float m_time;
 };

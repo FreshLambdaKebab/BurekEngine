@@ -12,7 +12,7 @@ ImageLoader::~ImageLoader()
 {
 }
 
-const Texture& ImageLoader::LoadPNG(const std::string & path)
+Texture ImageLoader::LoadPNG(const std::string & path)
 {
 	Texture texture = {};
 
