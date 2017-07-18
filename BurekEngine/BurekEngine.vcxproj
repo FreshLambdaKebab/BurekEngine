@@ -27,13 +27,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -100,6 +100,9 @@
       <AdditionalLibraryDirectories>$(SolutionDir)deps/lib/debug/</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32s.lib;SDL2.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2main.lib;SOIL.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -129,6 +132,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)deps/lib/release/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <Lib>
+      <AdditionalDependencies>SDL2main.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -147,29 +153,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Debug.cpp" />
-    <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\ImageLoader.cpp" />
-    <ClCompile Include="src\IOManager.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\picoPNG.cpp" />
-    <ClCompile Include="src\ResourceManager.cpp" />
-    <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="src\Sprite.cpp" />
-    <ClCompile Include="src\TextureCache.cpp" />
+    <ClCompile Include="src\burek\Debug.cpp" />
+    <ClCompile Include="src\burek\ImageLoader.cpp" />
+    <ClCompile Include="src\burek\IOManager.cpp" />
+    <ClCompile Include="src\burek\picoPNG.cpp" />
+    <ClCompile Include="src\burek\ResourceManager.cpp" />
+    <ClCompile Include="src\burek\Shader.cpp" />
+    <ClCompile Include="src\burek\Sprite.cpp" />
+    <ClCompile Include="src\burek\TextureCache.cpp" />
+    <ClCompile Include="src\burek\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Debug.h" />
-    <ClInclude Include="src\Game.h" />
-    <ClInclude Include="src\ImageLoader.h" />
-    <ClInclude Include="src\IOManager.h" />
-    <ClInclude Include="src\picoPNG.h" />
-    <ClInclude Include="src\ResourceManager.h" />
-    <ClInclude Include="src\Shader.h" />
-    <ClInclude Include="src\Sprite.h" />
-    <ClInclude Include="src\Texture.h" />
-    <ClInclude Include="src\TextureCache.h" />
-    <ClInclude Include="src\VertexBuffer.h" />
+    <ClInclude Include="src\burek\BurekEngine.h" />
+    <ClInclude Include="src\burek\Debug.h" />
+    <ClInclude Include="src\burek\ImageLoader.h" />
+    <ClInclude Include="src\burek\IOManager.h" />
+    <ClInclude Include="src\burek\picoPNG.h" />
+    <ClInclude Include="src\burek\ResourceManager.h" />
+    <ClInclude Include="src\burek\Shader.h" />
+    <ClInclude Include="src\burek\Sprite.h" />
+    <ClInclude Include="src\burek\Texture.h" />
+    <ClInclude Include="src\burek\TextureCache.h" />
+    <ClInclude Include="src\burek\VertexBuffer.h" />
+    <ClInclude Include="src\burek\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

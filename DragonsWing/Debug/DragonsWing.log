@@ -1,0 +1,15 @@
+﻿  Game.cpp
+c:\users\duran_000\documents\github\burekengine\dragonswing\src\game.cpp(71): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+c:\users\duran_000\documents\github\burekengine\dragonswing\src\game.cpp(90): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+c:\users\duran_000\documents\github\burekengine\dragonswing\src\game.cpp(132): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+c:\users\duran_000\documents\github\burekengine\dragonswing\src\game.cpp(133): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+  Generating Code...
+  Compiling...
+  main.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+Game.obj : warning LNK4049: locally defined symbol ___glewActiveTexture imported
+Game.obj : warning LNK4049: locally defined symbol ___glewUniform1i imported
+BurekEngine.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'BurekEngine.lib(glew.obj)' or at 'C:\Users\duran_000\Documents\GitHub\BurekEngine\Debug\vc120.pdb'; linking object as if no debug info
+  DragonsWing.vcxproj -> C:\Users\duran_000\Documents\GitHub\BurekEngine\Debug\DragonsWing.exe
+  DragonsWing.vcxproj -> C:\Users\duran_000\Documents\GitHub\BurekEngine\Debug\DragonsWing.pdb (Partial PDB)
