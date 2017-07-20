@@ -19,6 +19,7 @@
     <ClCompile Include="src\burek\Sprite.cpp" />
     <ClCompile Include="src\burek\TextureCache.cpp" />
     <ClCompile Include="src\burek\Window.cpp" />
+    <ClCompile Include="src\burek\Camera2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\burek\Debug.h" />
@@ -33,5 +34,6 @@
     <ClInclude Include="src\burek\VertexBuffer.h" />
     <ClInclude Include="src\burek\Window.h" />
     <ClInclude Include="src\burek\BurekEngine.h" />
+    <ClInclude Include="src\burek\Camera2D.h" />
   </ItemGroup>
 </Project>

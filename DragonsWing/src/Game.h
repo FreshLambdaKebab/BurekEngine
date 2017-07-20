@@ -7,6 +7,7 @@
 #include <burek\Sprite.h>
 #include <burek\Shader.h>
 #include <burek\Texture.h>
+#include <burek\Camera2D.h>
 
 using namespace burek;
 
@@ -33,9 +34,9 @@ private:
 	GameState m_gameState;
 
 	//game objects
-	//Sprite m_sprite;
 	std::vector<Sprite*>m_sprites;
 	Shader m_colorShader;
+	Camera2D m_camera;
 	
 	float m_fps;
 	float m_frameTime;

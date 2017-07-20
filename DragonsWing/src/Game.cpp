@@ -13,6 +13,8 @@ Game::Game() :
 	m_time(0.0f),
 	m_maxFPS(60.0f)
 {
+	//initialize teh camera
+	m_camera.Initialize(m_screenWidth, m_screenHeight);
 }
 
 Game::~Game()
@@ -37,10 +39,10 @@ void Game::Init()
 		
 	//initialize sprite
 	m_sprites.push_back(new Sprite());
-	m_sprites.back()->Init(-1.0f, -1.0f, 1.0f, 1.0f, "res/textures/mario-sprite.png");
+	m_sprites.back()->Init(0.0f,0.0f, m_screenWidth / 2.0f, m_screenHeight / 2.0f, "res/textures/mario-sprite.png");
 
-	m_sprites.push_back(new Sprite());
-	m_sprites.back()->Init(0.0f, -1.0f, 1.0f, 1.0f, "res/textures/mario-sprite.png");
+	//m_sprites.push_back(new Sprite());
+	//m_sprites.back()->Init(m_screenWidth  / 2, 0.0f, m_screenWidth / 2.0f, m_screenHeight / 2.0f, "res/textures/mario-sprite.png");
 
 
 
@@ -72,6 +74,9 @@ void Game::Update()
 
 		ProcessInput();
 		m_time += 0.01f;
+
+		m_camera.Update();
+
 		Draw();
 		CalculateFPS();
 
@@ -109,6 +114,11 @@ void Game::Draw()
 	//GLuint timeLocation = m_colorShader.GetUniformLocation("time");
 	//glUniform1f(timeLocation, m_time);
 
+	//set camera matrix
+	GLuint pLocation = m_colorShader.GetUniformLocation("P");
+	glm::mat4 cameraMatrix = m_camera.GetCameraMatrix();
+	glUniformMatrix4fv(pLocation, 1, GL_FALSE,&cameraMatrix[0][0]);
+		
 	//draw shit
 	for (size_t i= 0;i < m_sprites.size();i++)
 	{
@@ -173,6 +183,9 @@ void Game::ProcessInput()
 {
 	SDL_Event windowEvent;
 
+	const float CAMERA_SPEED = 20.0f;
+	const float SCALE_SPEED = 0.1f;
+
 	//handle events
 	while (SDL_PollEvent(&windowEvent))
 	{
@@ -181,6 +194,28 @@ void Game::ProcessInput()
 		case SDL_QUIT:
 			m_gameState = GameState::EXIT;
 			break;
+		case SDL_KEYDOWN:
+			switch (windowEvent.key.keysym.sym)
+			{
+			case SDLK_w://camera speed is inversed
+				m_camera.SetPosition(m_camera.GetPosition() + glm::vec2(0.0f,-CAMERA_SPEED));
+				break;
+			case SDLK_s:
+				m_camera.SetPosition(m_camera.GetPosition() + glm::vec2(0.0f, CAMERA_SPEED));
+				break;
+			case SDLK_a:
+				m_camera.SetPosition(m_camera.GetPosition() + glm::vec2(CAMERA_SPEED, 0.0f));
+				break;
+			case SDLK_d:
+				m_camera.SetPosition(m_camera.GetPosition() + glm::vec2(-CAMERA_SPEED, 0.0f));
+				break;
+			case SDLK_q:
+				m_camera.SetScale(m_camera.GetScale() + SCALE_SPEED);
+				break;
+			case SDLK_e:
+				m_camera.SetScale(m_camera.GetScale() - SCALE_SPEED);
+				break;
+			}
 		}
 
 		//check if user has pressed escaped to exit window

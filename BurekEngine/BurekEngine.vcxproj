@@ -153,6 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\burek\Camera2D.cpp" />
     <ClCompile Include="src\burek\Debug.cpp" />
     <ClCompile Include="src\burek\ImageLoader.cpp" />
     <ClCompile Include="src\burek\IOManager.cpp" />
@@ -165,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\burek\BurekEngine.h" />
+    <ClInclude Include="src\burek\Camera2D.h" />
     <ClInclude Include="src\burek\Debug.h" />
     <ClInclude Include="src\burek\ImageLoader.h" />
     <ClInclude Include="src\burek\IOManager.h" />
